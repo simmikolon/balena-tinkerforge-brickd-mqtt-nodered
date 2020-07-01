@@ -1,0 +1,25 @@
+version: '2'
+services:
+  mqttproxy:
+    build: ./mqttproxy
+    privileged: true
+    depends_on:
+      - brickdaemon
+    network_mode: host
+  brickdaemon:
+    build: ./brickdaemon
+    privileged: true
+    network_mode: host
+  nodered:
+    build: ./nodered
+    privileged: true
+    network_mode: host
+    depends_on:
+      - brickdaemon
+      - mqttproxy
+  wificonnect:
+    build: ./wifi-connect
+    privileged: true
+    network_mode: host
+    labels:
+      io.balena.features.dbus: '1'

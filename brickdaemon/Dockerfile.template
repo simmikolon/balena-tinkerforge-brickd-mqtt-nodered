@@ -1,0 +1,20 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%:latest
+
+# Defines our working directory in container
+WORKDIR /usr/src/app
+
+# Copy over the files created in the previous step, including lib/, bin/
+RUN apt-get update
+RUN apt-get install libusb-1.0-0 libudev0 pm-utils
+RUN apt-get install wget
+RUN wget http://download.tinkerforge.com/tools/brickd/linux/brickd_linux_latest_armhf.deb
+RUN dpkg -i brickd_linux_latest_armhf.deb
+
+ENV INITSYSTEM on
+ENV UDEV=1
+
+COPY . ./
+
+COPY brickd.conf /etc/brickd.conf
+
+CMD ["bash", "src/start.sh"]

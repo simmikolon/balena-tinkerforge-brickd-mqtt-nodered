@@ -1,0 +1,12 @@
+version: '2'
+services:
+  brickdaemon:
+    build: ./brickdaemon
+    privileged: true
+    network_mode: host
+  bricklet2datacake:
+    build: ./bricklet2datacake
+    privileged: true
+    depends_on:
+      - brickdaemon
+    network_mode: host
