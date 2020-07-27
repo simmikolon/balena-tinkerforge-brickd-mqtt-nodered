@@ -6,7 +6,7 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-node:10-build as build
 RUN JOBS=MAX npm install -g --production --silent \
        node-red \
        node-red-admin \
-       node-red-contrib-resinio
+       node-red-contrib-resinio \
        node-red-contrib-datacake
 
 ###
