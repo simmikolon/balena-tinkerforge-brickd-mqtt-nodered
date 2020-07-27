@@ -2,10 +2,6 @@ version: '2'
 volumes:
     resin-data:
 services:
-  brickdaemon:
-    build: ./brickdaemon
-    privileged: true
-    network_mode: host
   node-red:
     build: ./node-red
     volumes:
