@@ -36,3 +36,5 @@ services:
       - 80:80
     depends_on:
       - mosquitto
+      - brickdaemon
+      - tf-mqtt-bindings
