@@ -2,10 +2,21 @@ version: '2'
 volumes:
     resin-data:
 services:
+  mosquitto:
+    build: ./mosquitto
+    privileged: true
+    network_mode: host
   brickdaemon:
     build: ./brickdaemon
     privileged: true
     network_mode: host
+  tf-mqtt-bindings:
+    build: ./tf-mqtt-bindings
+    privileged: true
+    network_mode: host
+    depends_on:
+      - mosquitto
+      - brickdaemon
   node-red:
     build: ./node-red
     volumes:
@@ -23,3 +34,5 @@ services:
       - "/dev/i2c-1:/dev/i2c-1"
     ports:
       - 80:80
+    depends_on:
+      - mosquitto
