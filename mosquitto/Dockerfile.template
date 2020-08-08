@@ -1,19 +1,14 @@
-FROM /%%BALENA_ARCH%%-alpine
+FROM balenalib/%%BALENA_MACHINE_NAME%%:latest
 
-# Configure mosquitto username and password with environmental variables
-#ENV USERNAME mqtt_username
-#ENV PASSWORD mqtt_password
+# Defines our working directory in container
+WORKDIR /usr/src/app
 
-# Install packages
-RUN apk --no-cache add mosquitto
+# Copy over the files created in the previous step, including lib/, bin/
+RUN apt-get update
+RUN apt install -y mosquitto mosquitto-clients
 
-#RUN touch /etc/mosquitto/password && mosquitto_passwd -b /etc/mosquitto/password ${USERNAME} ${PASSWORD}}
+# This will copy all files in our root to the working  directory in the container
+COPY . ./
 
-# Expose MQTT port
-EXPOSE 1883
-
-ENV PATH /usr/sbin:$PATH
-
-ENV INITSYSTEM on
-
-ENTRYPOINT ["/usr/sbin/mosquitto"]
+# server.js will run when container starts up on the device
+CMD ["bash", "src/start.sh"]
