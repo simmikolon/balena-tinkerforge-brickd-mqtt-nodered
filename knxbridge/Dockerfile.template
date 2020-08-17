@@ -1,11 +1,11 @@
 # base-image for python on any machine using a template variable,
 # see more about dockerfile templates here: https://www.balena.io/docs/learn/develop/dockerfile/
-FROM balenalib/%%BALENA_MACHINE_NAME%%-python:latest-stretch-run
+FROM balenalib/%%BALENA_MACHINE_NAME%%-python:latest-stretch-build
 
 # Set our working directory
 WORKDIR /usr/src/app
 
-RUN apt-get install gcc python-dev
+#RUN apt-get install gcc python-dev
 
 # pip install python deps from requirements.txt on the resin.io build server
 RUN pip install xknx
