@@ -38,7 +38,7 @@ services:
       - mosquitto
       - brickdaemon
       - tf-mqtt-bindings
-    knxbridge:
-      build: ./knxbridge
-      privileged: true
-      network_mode: host
+  knxbridge:
+    build: ./knxbridge
+    privileged: true
+    network_mode: host
