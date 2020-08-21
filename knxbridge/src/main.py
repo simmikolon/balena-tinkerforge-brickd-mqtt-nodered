@@ -98,9 +98,9 @@ class KNX2Datacake():
         if msg.topic == "dtck/xknx2datacake/160aa447-c7e1-46f9-966e-1ebb515bd2d4/VENT_STATUS_CONTROL":
             try:
                 if msg.payload == b'true':
-                    self.xknx.loop.ensure_future(self.xknx.devices['VENT_STATUS'].set_on())
+                    self.xknx.loop.create_task(self.xknx.devices['VENT_STATUS'].set_on())
                 else:
-                    self.xknx.loop.ensure_future(self.xknx.devices['VENT_STATUS'].set_off())
+                    self.xknx.loop.create_task(self.xknx.devices['VENT_STATUS'].set_off())
             except Exception as e:
                 print(e)
 
