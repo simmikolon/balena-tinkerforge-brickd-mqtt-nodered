@@ -115,6 +115,17 @@ class KNX2Datacake():
             except Exception as e:
                 print(e)
 
+        # Airflow set_port_interrupt
+
+        elif msg.topic == "dtck/xknx2datacake/160aa447-c7e1-46f9-966e-1ebb515bd2d4/VENT_AIRFLOW_LEVEL_SETPOINT":
+            try:
+                if msg.payload == b'true':
+                    self.xknx.loop.create_task(self.xknx.devices['VENT_AIRFLOW_LEVEL'].set_on())
+                else:
+                    self.xknx.loop.create_task(self.xknx.devices['VENT_AIRFLOW_LEVEL'].set_off())
+            except Exception as e:
+                print(e)
+
     def on_connect(self, client, userdata, flags, rc):
         print("Connected with result code "+str(rc))
         client.subscribe("dtck/xknx2datacake/160aa447-c7e1-46f9-966e-1ebb515bd2d4/+")

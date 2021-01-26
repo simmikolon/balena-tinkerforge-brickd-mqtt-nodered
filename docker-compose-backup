@@ -1,5 +1,9 @@
 version: '2'
 services:
+  mosquitto:
+    build: ./mosquitto
+    privileged: true
+    network_mode: host
   mqttproxy:
     build: ./mqttproxy
     privileged: true

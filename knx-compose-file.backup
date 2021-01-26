@@ -10,9 +10,6 @@ services:
     build: ./brickdaemon
     privileged: true
     network_mode: host
-    devices:
-      - "/dev/spidev0.0:/dev/spidev0.0"
-      - "/dev/spidev0.1:/dev/spidev0.1"
   tf-mqtt-bindings:
     build: ./tf-mqtt-bindings
     privileged: true
@@ -41,3 +38,7 @@ services:
       - mosquitto
       - brickdaemon
       - tf-mqtt-bindings
+  knxbridge:
+    build: ./knxbridge
+    privileged: true
+    network_mode: host
