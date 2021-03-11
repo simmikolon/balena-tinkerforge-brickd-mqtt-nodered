@@ -8,6 +8,7 @@ RUN JOBS=MAX npm install -g --production --unsafe-perm \
        node-red-admin \
        node-red-contrib-balena \
        node-red-contrib-datacake \
+       node-red-node-serialport \
        tinkerforge
 
 ###
