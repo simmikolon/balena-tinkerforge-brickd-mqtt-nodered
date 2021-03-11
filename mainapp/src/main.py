@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import notecard
+import time
 from periphery import Serial
 
 port = Serial("/dev/ttyS0", 9600)
@@ -10,3 +11,6 @@ req = {"req": "card.wireless"}
 
 rsp = nCard.Transaction(req)
 print(rsp)
+
+while True:
+    time.sleep(1)
