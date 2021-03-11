@@ -2,6 +2,10 @@ version: '2'
 volumes:
     resin-data:
 services:
+  mosquitto:
+    build: ./mosquitto
+    privileged: true
+    network_mode: host
   brickdaemon:
     build: ./brickdaemon
     privileged: true
@@ -9,7 +13,30 @@ services:
     devices:
       - "/dev/spidev0.0:/dev/spidev0.0"
       - "/dev/spidev0.1:/dev/spidev0.1"
-  mainapp:
-    build: ./mainapp
+  tf-mqtt-bindings:
+    build: ./tf-mqtt-bindings
     privileged: true
     network_mode: host
+    depends_on:
+      - mosquitto
+      - brickdaemon
+  node-red:
+    build: ./node-red
+    volumes:
+      - 'resin-data:/data'
+    restart: always
+    privileged: true
+    network_mode: host
+    labels:
+      io.balena.features.supervisor-api: '1'
+    cap_add:
+      - SYS_RAWIO
+    devices:
+      - "/dev/mem:/dev/mem"
+      - "/dev/gpiomem:/dev/gpiomem"
+    ports:
+      - 80:80
+    depends_on:
+      - mosquitto
+      - brickdaemon
+      - tf-mqtt-bindings
