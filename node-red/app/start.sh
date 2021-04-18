@@ -4,7 +4,7 @@
 mkdir -p /data/node-red/user/lib/flows || true
 cp /usr/src/app/flows/* /data/node-red/user/lib/flows/
 
-#npm install -g tinkerforge
+npm install -g /tinkerforge
 
 # Start app
 DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket node-red --settings /usr/src/app/settings.js
