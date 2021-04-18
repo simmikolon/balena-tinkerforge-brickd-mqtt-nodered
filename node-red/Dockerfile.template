@@ -10,7 +10,7 @@ RUN JOBS=MAX npm install -g --production --unsafe-perm \
        node-red-contrib-datacake \
        node-red-node-serialport \
        node-red-contrib-i2c \
-       tinkerforge
+       /usr/src/tinkerforge
 
 ###
 # Runtime image

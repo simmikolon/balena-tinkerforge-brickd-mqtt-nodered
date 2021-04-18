@@ -2,7 +2,16 @@ version: '2'
 volumes:
     resin-data:
 services:
-    mainapp:
-      build: ./mainapp
-      privileged: true
-      network_mode: host
+  brickdaemon:
+    build: ./brickdaemon
+    privileged: true
+    network_mode: host
+    devices:
+      - "/dev/spidev0.0:/dev/spidev0.0"
+      - "/dev/spidev0.1:/dev/spidev0.1"
+  mainapp:
+    build: ./mainapp
+    privileged: true
+    network_mode: host
+    depends_on:
+      - brickdaemon
