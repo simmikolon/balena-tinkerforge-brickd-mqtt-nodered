@@ -177,7 +177,7 @@ module.exports = {
     functionGlobalContext: {
         process: process,
         os: require('os'),
-        tinkerforge: require('/usr/local/lib/node_modules/tinkerforge/Tinkerforge.js'),
+        //tinkerforge: require('/usr/local/lib/node_modules/tinkerforge/Tinkerforge.js'),
         // octalbonescript:require('octalbonescript'),
         // jfive:require("johnny-five"),
         // j5board:require("johnny-five").Board({repl:false})
