@@ -7,5 +7,5 @@ python src/tinkerforge_mqtt.py --debug \
  --broker-port $BROKER_PORT \
  --broker-username $BROKER_USERNAME \
  --broker-password $BROKER_PASSWORD \
- --broker-certificate isrgrootx1.pem \
+ --broker-certificate src/isrgrootx1.pem \
  --client-id $BALENA_DEVICE_UUID
