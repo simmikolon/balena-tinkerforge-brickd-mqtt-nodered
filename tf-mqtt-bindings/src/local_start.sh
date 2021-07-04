@@ -1,11 +1,11 @@
 #!/bin/bash
 
-python src/tinkerforge_mqtt.py --debug \
+python3 tinkerforge_mqtt.py --debug \
  --show-payload \
- --global-topic-prefix $BALENA_DEVICE_UUID \
+ --global-topic-prefix DTCK/$GLOBAL_TOPIC_PREFIX \
  --broker-host $BROKER_HOST \
  --broker-port $BROKER_PORT \
  --broker-username $BROKER_USERNAME \
  --broker-password $BROKER_PASSWORD \
  --broker-certificate isrgrootx1.pem \
- --client-id $BALENA_DEVICE_UUID
+ --client-id $CLIENT_ID

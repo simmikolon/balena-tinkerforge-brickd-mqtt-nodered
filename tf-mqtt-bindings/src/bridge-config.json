@@ -1,0 +1,11 @@
+{
+    "pre_connect": {
+        "datacake-002/register/ip_connection/connected": {"register": true},
+        "datacake-002/register/ip_connection/enumerate": {"register": true}
+    },
+    "post_connect": {
+        "datacake-002/request/ip_connection/enumerate": ""
+    }
+}
+
+{"BLUE":{"field_name":"BLUE","timestamp":"1624717298","value":25},"GREEN":{"field_name":"GREEN","timestamp":"1624717295","value":25},"RED":{"field_name":"RED","timestamp":"1624717292","value":25}}
