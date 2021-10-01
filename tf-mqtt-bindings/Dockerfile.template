@@ -21,4 +21,4 @@ COPY . ./
 #EXPORT 4223
 
 # main.py will run when container starts up on the device
-CMD ["bash", "src/start.sh"]
+CMD ["bash", "src/device_broker_start.sh"]
